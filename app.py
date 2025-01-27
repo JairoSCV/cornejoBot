@@ -85,8 +85,7 @@ def recibirMensajes(req):
                     numero = messages['from'] 
                     
                     # Llamar a la función para agregar el texto al log y base de datos
-                    agregar_mensajes_log(json.dumps(texto))
-                    agregar_mensajes_log(json.dumps(numero))
+                    enviar_mensajes_whatsapp(texto,numero)
 
        
 
@@ -95,7 +94,7 @@ def recibirMensajes(req):
         return jsonify({'message':'EVENT_RECEIVED'})
 
 
-def enviar__mensajes_whatsapp(texto, numero):
+def enviar_mensajes_whatsapp(texto, numero):
     texto = texto.lower()
 
     if 'hola' in texto:
