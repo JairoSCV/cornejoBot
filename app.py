@@ -72,7 +72,7 @@ def recibirMensajes(req):
         objeto_mensaje = value['messages']
 
         # Llamar a la función para agregar el texto al log y base de datos
-        agregar_mensajes_log(objeto_mensaje)
+        agregar_mensajes_log(json.dumps(objeto_mensaje))
 
         return jsonify({'message':'EVENT_RECEIVED'})
     except Exception as e:
