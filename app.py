@@ -108,6 +108,41 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "Hola 🙉, ¿como estás crack?"
             }
         }
+    elif "1" in texto:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Lorem ipsum etc etc"
+            }
+        }
+    elif "2" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "location": {
+                "latitude": "-12.070706368751747",
+                "longitude": "-77.09867179517134",
+                "name": "CABAL",
+                "address": "Av. Elmer Faucett 261 San Miguel"
+            }
+        }
+    elif "3" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "document",
+            "document": {
+                "link": "https://www.renfe.com/content/dam/renfe/es/General/PDF-y-otros/Ejemplo-de-descarga-pdf.pdf",
+                "caption": "Temario del curso #001"
+            }
+        }
     else:
         data = {
             "messaging_product": "whatsapp",    
@@ -116,7 +151,7 @@ def enviar_mensajes_whatsapp(texto, numero):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "Opciones para el usuario"
+                "body": "Hola, visita mi perfil de GitHub para más información https://github.com/JairoSCV \n 👀 Por favor, ingresa un número para recibir información \n\n1️⃣Información del curso \n2️⃣Ubicación \n3️⃣Enviar temario \n4️⃣Audio explicando \n5️⃣Video de introducción \n6️⃣Hablar con Cornejo \n7️⃣Horario de atención \n0️⃣Regresar al Menú"
             }
         }
     
