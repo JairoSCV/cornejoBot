@@ -77,15 +77,22 @@ def recibirMensajes(req):
 
             if "type" in messages:
                 tipo = messages['type']
+                
+                # Guardar log en BBDD
+                agregar_mensajes_log(json.dumps(tipo))
 
                 if tipo == 'interactive':
                     return 0
+                
                 if 'text' in messages:
                     texto = messages['text']['body']
                     numero = messages['from'] 
                     
                     # Llamar a la función para agregar el texto al log y base de datos
                     enviar_mensajes_whatsapp(texto,numero)
+
+                    # Guardar log en BBDD
+                    agregar_mensajes_log(json.dumps(messages))
 
        
 
@@ -195,6 +202,47 @@ def enviar_mensajes_whatsapp(texto, numero):
             "text": {
                 "preview_url": False,
                 "body": "Hola, visita mi perfil de GitHub para más información https://github.com/JairoSCV \n 👀 Por favor, ingresa un número para recibir información \n\n1️⃣Información del curso \n2️⃣Ubicación \n3️⃣Enviar temario \n4️⃣Audio explicando \n5️⃣Video de introducción \n6️⃣Hablar con Cornejo \n7️⃣Horario de atención \n0️⃣Regresar al Menú"
+            }
+        }
+    elif "boton" in texto:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "interactive",
+            "interactive":{
+                "type": "button",
+                "body":{
+                    "text":"¿Confirmas tu registro?"
+                },
+                "footer":{
+                    "text":"Selecciona una de las opciones"
+                },
+                "action":{
+                    "buttons":[
+                        {
+                            "type":"reply",
+                            "reply":{
+                                "id":"btnSi",
+                                "title":"Si"
+                            }
+                        },
+                        {
+                            "type":"reply",
+                            "reply":{
+                                "id":"btnNo",
+                                "title":"No"
+                            }
+                        },
+                        {
+                            "type":"reply",
+                            "reply":{
+                                "id":"btnTalvez",
+                                "title":"Talvez"
+                            }
+                        }
+                    ]
+                }
             }
         }
     else:
