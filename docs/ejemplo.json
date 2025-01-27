@@ -1,0 +1,39 @@
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "534904653040074",
+      "changes": [
+        {
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "15551493072",
+              "phone_number_id": "534099586452118"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Jairo Cornejo"
+                },
+                "wa_id": "51905465659"
+              }
+            ],
+            "messages": [
+              {
+                "from": "51905465659",
+                "id": "wamid.HBgLNTE5MDU0NjU2NTkVAgASGCAxODY0MjA0RjQ5MzJDRDVDMTQyM0RDMDAyNThEN0ZDRAA=",
+                "timestamp": "1738010049",
+                "text": {
+                  "body": "Cr7"
+                },
+                "type": "text"
+              }
+            ]
+          },
+          "field": "messages"
+        }
+      ]
+    }
+  ]
+}

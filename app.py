@@ -64,18 +64,20 @@ def verificarToken(req):
         return jsonify({'error':'Token inválido'}),401
 
 def recibirMensajes(req):
-    data = req.get_json()  # Obtienes el diccionario JSON
+    try:
+        req = request.get_json()
+        entry = req['entry'][0]
+        changes = entry['changes'][0]
+        value = changes['value']
+        objeto_mensaje = value['messages']
 
-    # Extrae el texto de la estructura JSON, por ejemplo, suponiendo que 'message' es el campo con el texto
-    if 'message' in data:
-        texto = data['message']
-    else:
-        texto = json.dumps(data)  # Si no hay campo 'message', guardar todo el JSON como texto
+        # Llamar a la función para agregar el texto al log y base de datos
+        agregar_mensajes_log(objeto_mensaje)
 
-    # Llamar a la función para agregar el texto al log y base de datos
-    agregar_mensajes_log(texto)
+        return jsonify({'message':'EVENT_RECEIVED'})
+    except Exception as e:
+        return jsonify({'message':'EVENT_RECEIVED'})
 
-    return jsonify({'message':'EVENT_RECEIVED'})
 
 
 if __name__ == '__main__':
