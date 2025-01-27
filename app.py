@@ -79,7 +79,7 @@ def recibirMensajes(req):
                 tipo = messages['type']
                 
                 # Guardar log en BBDD
-                agregar_mensajes_log(json.dumps(tipo))
+                agregar_mensajes_log(json.dumps(messages))
 
                 if tipo == 'interactive':
                     return 0
