@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
+import http.client
 
 app = Flask(__name__)
 
@@ -94,6 +95,52 @@ def recibirMensajes(req):
         return jsonify({'message':'EVENT_RECEIVED'})
 
 
+def enviar__mensajes_whatsapp(texto, numero):
+    texto = texto.lower()
+
+    if 'hola' in texto:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Hola 🙉, ¿como estás crack?"
+            }
+        }
+    else:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Opciones para el usuario"
+            }
+        }
+    
+    # Convertir el diccionario a formato JSON
+    data = json.dumps(data)
+
+    # Necesitamos el header (token + Url)
+    headers = {
+        "Content-Type":"application/json",
+        "Authorization":"Bearer EAAZAMe6iZAJXIBO9WRAzV6QZBBZCHAdncJu4tZAtZBH34HfIi3NAZAyvKJzZB447R1hkVgnRpr5ODo5OOAskGEjZB8oqvMiy5NYqdXm7QkZC40oBaGKRFN6CplIZAQX2VzDwhfIcZAc2er7rYHsaYveY9CxsTTFlz1CF1jMty2ZCK3ubqxh77ZCmMHTycMnJukkktBtmrWgwZDZD"
+    }
+
+    # Necesitamos libreria Http
+    connection = http.client.HTTPSConnection("graph.facebook.com")
+
+    try:
+        connection.request("POST","/v21.0/534099586452118/messages",data,headers)
+        response = connection.getresponse()
+        print(response.status, response.reason)
+    except Exception as e:
+        agregar_mensajes_log(json.dumps(e))
+    finally:
+        connection.close()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
