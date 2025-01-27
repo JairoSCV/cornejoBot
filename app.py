@@ -89,6 +89,13 @@ def recibirMensajes(req):
                         numero = messages['from']
 
                         enviar_mensajes_whatsapp(texto, numero)
+
+                    elif tipo_interactivo == 'list_reply':
+                        texto = messages['interactive']['list_reply']['id']
+                        numero = messages['from']
+
+                        enviar_mensajes_whatsapp(texto,numero)
+
                 
                 if 'text' in messages:
                     texto = messages['text']['body']
@@ -286,8 +293,7 @@ def enviar_mensajes_whatsapp(texto, numero):
         }        
     elif "lista" in texto:
         data = {
-            "messaging_product": "whatsapp",    
-            "recipient_type": "individual",
+            "messaging_product": "whatsapp",
             "to": numero,
             "type": "interactive",
             "interactive":{
@@ -313,7 +319,8 @@ def enviar_mensajes_whatsapp(texto, numero):
                                     "description": "Vende lo que no uses"
                                 }
                             ]
-                        },{
+                        },
+                        {
                             "title":"Distribucion y entrega",
                             "rows":[
                                 {
@@ -330,6 +337,28 @@ def enviar_mensajes_whatsapp(texto, numero):
                         }
                     ]
                 }
+            }
+        }
+    elif "btnCompra" in texto:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Los mejores artículos top en ofertas"
+            }
+        }
+    elif "btnVender" in texto:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Excelente elección"
             }
         }
     else:

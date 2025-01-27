@@ -1,0 +1,18 @@
+{
+  "context": {
+    "from": "15551493072",
+    "id": "wamid.HBgLNTE5MDU0NjU2NTkVAgARGBIxRUY1ODU5NDEwNEI5N0IyNjIA"
+  },
+  "from": "51905465659",
+  "id": "wamid.HBgLNTE5MDU0NjU2NTkVAgASGCBFQkUxRjU0NEFEM0IxMDhENkMxNzM0ODJGMEU4NEI5NwA=",
+  "timestamp": "1738017413",
+  "type": "interactive",
+  "interactive": {
+    "type": "list_reply",
+    "list_reply": {
+      "id": "btnCompra",
+      "title": "Comprar",
+      "description": "Compra los mejores art\u00edculos de tecnolog\u00eda"
+    }
+  }
+}
