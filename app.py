@@ -143,6 +143,60 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "caption": "Temario del curso #001"
             }
         }
+    elif "4" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "audio",
+            "audio": {
+                "link": "https://sax-ensemble.com/wp-content/uploads/2014/11/Gliding_Trough_S_Kemper_Sax_Ensemble.mp3"
+            }
+        }
+    elif "5" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "video",
+            "video": {
+                "link": "https://www.youtube.com/watch?v=6e0XWqAeTwc",
+                "caption": "UY ESA NO"
+            }
+        }
+    elif "6" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "En breve me pondré en contacto contigo 🐾🐾"
+            }
+        }
+    elif "7" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "📅 Horario de atención: Lunes a Viernes \n Horario: 9:00 am a 5:00 pm"
+            }
+        }
+    elif "0" in texto:
+        data = {
+            "messaging_product": "whatsapp",    
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Hola, visita mi perfil de GitHub para más información https://github.com/JairoSCV \n 👀 Por favor, ingresa un número para recibir información \n\n1️⃣Información del curso \n2️⃣Ubicación \n3️⃣Enviar temario \n4️⃣Audio explicando \n5️⃣Video de introducción \n6️⃣Hablar con Cornejo \n7️⃣Horario de atención \n0️⃣Regresar al Menú"
+            }
+        }
     else:
         data = {
             "messaging_product": "whatsapp",    
