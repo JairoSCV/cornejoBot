@@ -73,7 +73,7 @@ def recibirMensajes(req):
         objeto_mensaje = value['messages']
 
         if objeto_mensaje:
-            messages = objeto_mensaje[0]
+            messages = objeto_mensaje[0] # Almacena el contenido de 'messages' - ejemplo.json
 
             if "type" in messages:
                 tipo = messages['type']
@@ -236,21 +236,21 @@ def enviar_mensajes_whatsapp(texto, numero):
                         {
                             "type":"reply",
                             "reply":{
-                                "id":"btnSi",
+                                "id":"btnsi",
                                 "title":"Si"
                             }
                         },
                         {
                             "type":"reply",
                             "reply":{
-                                "id":"btnNo",
+                                "id":"btnno",
                                 "title":"No"
                             }
                         },
                         {
                             "type":"reply",
                             "reply":{
-                                "id":"btnTalvez",
+                                "id":"btntalvez",
                                 "title":"Talvez"
                             }
                         }
@@ -258,7 +258,7 @@ def enviar_mensajes_whatsapp(texto, numero):
                 }
             }
         }
-    elif "btnSi" in texto:
+    elif "btnsi" in texto:
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -269,7 +269,7 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "Muchas gracias por aceptar"
             }
         }
-    elif "btnNo" in texto:
+    elif "btnno" in texto:
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -309,12 +309,12 @@ def enviar_mensajes_whatsapp(texto, numero):
                             "title":"Compra y venta",
                             "rows": [
                                 {
-                                    "id":"btnCompra",
+                                    "id":"btncompra",
                                     "title":"Comprar",
                                     "description": "Compra los mejores artículos de tecnología"
                                 },
                                 {
-                                    "id":"btnVender",
+                                    "id":"btnvender",
                                     "title":"Vender",
                                     "description": "Vende lo que no uses"
                                 }
@@ -324,12 +324,12 @@ def enviar_mensajes_whatsapp(texto, numero):
                             "title":"Distribucion y entrega",
                             "rows":[
                                 {
-                                    "id":"btnDireccion",
+                                    "id":"btndireccion",
                                     "title":"Local",
                                     "description": "Puedes visitar nuestro local"
                                 },
                                 {
-                                    "id":"btnEntrega",
+                                    "id":"btnentrega",
                                     "title":"Entrega",
                                     "description": "La entrega se realiza todos los días"
                                 }
@@ -339,7 +339,7 @@ def enviar_mensajes_whatsapp(texto, numero):
                 }
             }
         }
-    elif "btnCompra" in texto:
+    elif "btncompra" in texto:
         data = {
             "messaging_product": "whatsapp",    
             "recipient_type": "individual",
@@ -350,7 +350,7 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "Los mejores artículos top en ofertas"
             }
         }
-    elif "btnVender" in texto:
+    elif "btnvender" in texto:
         data = {
             "messaging_product": "whatsapp",    
             "recipient_type": "individual",
