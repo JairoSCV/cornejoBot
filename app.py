@@ -46,6 +46,7 @@ def agregar_mensajes_log(texto):
 # Token de verificacion para la configuracion
 TOKEN = "CORNEJO"
 
+# Interacción con la API de Whatsapp
 @app.route('/webhook',methods=['GET','POST'])
 def webhook():
     if request.method == 'GET':
@@ -71,6 +72,7 @@ def recibirMensajes(req):
         changes = entry['changes'][0]
         value = changes['value']
         objeto_mensaje = value['messages']
+        agregar_mensajes_log(json.dumps(entry))
 
         if objeto_mensaje:
             messages = objeto_mensaje[0] # Almacena el contenido de 'messages' - ejemplo.json
