@@ -72,6 +72,9 @@ def recibirMensajes(req):
         changes = entry['changes'][0]
         value = changes['value']
         objeto_mensaje = value['messages']
+
+
+        # Muestra el json completo de lo que se envía
         agregar_mensajes_log(json.dumps(entry))
 
         if objeto_mensaje:
